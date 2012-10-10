@@ -1,4 +1,4 @@
-A Python Mixin approach for JSON-RPC v2.0 protocol
+Python JSON-RPC v2.0 (mixin)
 ======================
 
 A Python Mixin approach for JSON-RPC v2.0
@@ -8,12 +8,13 @@ Why?
 When building a solution, a framework is selected (django, tornado, web.py, etc).
 The main idea of having a Mixin approach is to leverage eveything that has to
 deal with the spec itself (decoding messages, encoding messages of invoked method
-result) without providing another WSGI handler that needs to run part of the stack.
+results, invoking the method itself, etc.) without providing another WSGI handler
+or server implementation that needs to run part of the stack.
 
 How?
 -------
-Basing the approach of a MVC, you have a controller handling the requests, or
-another type of request handler.
+Considering an approach of a MVC solution, you have a controller handling the requests, or
+another type of request handler which is dealing with the transport layer.
 
 A good example of this is the websocket implementation by tornado. For instance:
 
@@ -21,7 +22,7 @@ A good example of this is the websocket implementation by tornado. For instance:
     pass
 
 Your handler is already providing the transport by extending the tornado websocket
-and is capable of RPC by mixin' in the RequestHandlerMixin form this library.
+and is capable of RPC by mixin' in the RequestHandlerMixin from this library.
 
 Basic Usage
 -------
